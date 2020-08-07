@@ -1,0 +1,4 @@
+win+e:打开我的电脑
+win+d:返回桌面
+win+shift+s:截图
+win+v:剪切板
