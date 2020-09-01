@@ -51,7 +51,6 @@ router.delete("/", async (req, res) => {             //收到请求删除某一�
 })
 
 router.get("/list/page", async (req, res) => {           //收到获取全部博客列表的请求（前台页面）
-    console.log(req.query.limit, req.query.page)
     let result
     if (req.query.limit && req.query.page) {
         result = await findBlogListPage(+req.query.limit, +req.query.page)

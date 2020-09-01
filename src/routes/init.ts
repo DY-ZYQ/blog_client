@@ -7,6 +7,8 @@ import userRouter from "./api/user"
 import commentRouter from "./api/comment"
 import cookieParser from "cookie-parser"
 import tokenMiddleware from "./Middleware/tokenMideleware"
+import compression from "compression"
+
 var multer = require('multer')
 
 const staticURL = path.resolve(__dirname, "../../public");       //静态资源的路径
@@ -32,6 +34,7 @@ var upload = multer({ storage: storage })
 
 app.use(cookieParser())  //加入这个中间件后，会在req中加入cookie属性用于获取所有请求过来的cookies，会在res中注入cookie方法，用于设置cookie
 app.use(tokenMiddleware)              //处理token验证的中间件
+app.use(compression());
 app.use(express.static(staticURL))              //托管静态资源
 app.use(express.urlencoded({ extended: true }))  //把application/x-www-form-urlencoded格式的消息体解析成字符串，并且我们可以直接访问
 app.use(express.json())                          //把json格式的消息体解析成对象并且我们可以直接访问
